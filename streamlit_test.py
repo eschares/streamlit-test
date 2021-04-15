@@ -12,7 +12,7 @@ import numpy as np
 st.title('Elsevier 2021 Cancellations')
 st.write("Here's our first attempt at using data to create a table:")
 
-file = "C:\\Users\\eschares\\Desktop\\eschares\\Collection Development\\Elsevier\\2021_cancellations_Unsub_finalizedOct2020\\Unsub_Elsevier_2021_cancellations.csv"
+file = "Unsub_Elsevier_2021_cancellations.csv"
 df = pd.read_csv(file)
 st.write(df.head())
 
