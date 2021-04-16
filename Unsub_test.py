@@ -31,21 +31,16 @@ filt = ( (df['free_instant_usage_percent'] >= OA_percent_slider[0]) & (df['free_
         (df['subscription_cost'] >= price_slider[0]) & (df['subscription_cost'] <= price_slider[1])
         )   
 
-#filt =  (
-    #((df['free_instant_usage_percent'] >= OA_percent_slider[0]) & (df['free_instant_usage_percent']<= OA_percent_slider[1]) #&
-    #(df['downloads'] <= downloads_slider) &
-    #(df['citations'] <= citations_slider)
-#    )
 
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
     st.write(df[filt])
 
-temp = str(df[filt].shape[0])
-temp2 = str(df.shape[0])
-cost_sum = df[filt]['subscription_cost'].sum()
-cost_sum_to_print = locale.currency(cost_sum, grouping=True)
-my_slot1.text(temp + ' rows selected out of ' + temp2 + ' rows, costing ' + cost_sum_to_print)
+selected_jnls = str(df[filt].shape[0])
+total_jnls = str(df.shape[0])
+cost_sum = df[filt]['subscription_cost'].sum()  #cost of selected journals
+currency_string = "${:,.0f}".format(cost_sum)   #format with $, commas, and no decimal points
+my_slot1.text(selected_jnls + ' rows selected out of ' + total_jnls + ' rows, costing ' + currency_string)
 
 #Altair scatter plot
 chart = alt.Chart(df[filt]).mark_circle().encode(
