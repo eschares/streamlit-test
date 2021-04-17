@@ -30,9 +30,9 @@ chart_data = pd.DataFrame(
 st.sidebar.line_chart(chart_data)
 
 #map data enabled with checkbox
-if st.sidebar.checkbox('Show map of San Francisco'):
+if st.sidebar.checkbox('Show map of Ames'):
     map_data = pd.DataFrame(
-        np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
+        np.random.randn(50, 2) / [50, 50] + [42.027992, -93.648693],
         columns=['lat', 'lon'])
     st.map(map_data)
     
